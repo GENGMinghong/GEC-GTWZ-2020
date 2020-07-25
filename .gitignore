@@ -6,3 +6,4 @@ gector/model_path/xlnet_0_gector.th
 *.th
 data/PowerGrammarQuestionBank.csv
 gector/requirements.txt
+*.whl
