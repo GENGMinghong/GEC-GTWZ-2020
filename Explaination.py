@@ -15,8 +15,6 @@ from nltk.stem import PorterStemmer
 from nltk.corpus import wordnet
 import pandas as pd
 import errant
-import pandas as pd
-import difflib
 
 #lemmatizer = WordNetLemmatizer()
 #ps = PorterStemmer() 
@@ -126,7 +124,6 @@ def get_category(s1,s2):
         else:
             return 'Other'
 
-
 # Get the Category of errors, there are 6 types.
 # =============================================================================
 # def get_category(s1,s2):
@@ -180,30 +177,64 @@ def get_explanation(s1,s2):
     orig = annotator.parse(s1)
     cor = annotator.parse(s2)
     edits = annotator.annotate(orig, cor)
-    if get_category(s1,s2)=='Verb Form':
+    error = get_category(s1,s2)
+    if error == 'Verb Form':
         for e in edits:
             if 'TENSE' in e.type:
-                return 'Verb Tense Error'
+                return 'Verb Tense Error.'
             elif 'FORM' in e.type:
-                return 'Verb Form error'
+                return 'Verb Form error.'
             else:
-                return 'Other verb error'
-    elif get_category(s1,s2)=='Word Form':
+                return 'Other verb error.'
+    elif error == 'Word Form':
         for e in edits:
             if 'NUM' in e.type:
-                return 'Noun Number error'
+                return 'Noun Number error.'
             elif 'ADJ' in e.type:
-                return 'Adjective error'
+                return 'Adjective error.'
             elif 'MORPH' in e.type:
-                return 'Morphology error'
+                return 'Morphology error.'
             else:
-                return 'Other word form error'
-    elif get_category(s1, s2) == 'Punctuation':
-        return 'Punctuation Error'
-    elif get_category(s1, s2) == 'Subject Verb Agreement':
-        return 'Please check the subject-verb agreement, choose the approate combination of subject and verb'
-
-#    get_explanation['Punctuation'] = 'Wrong Punctuation'
+                return 'Other word form error.'
+    elif error == 'Punctuation':
+        for e in edits:
+            if 'M:' in e.type:
+                expla = f"Consider add punctuation '{e.c_str}' in your sentence."
+                return expla
+            if 'R:' in e.type:
+                expla = f"Consider change the punctuation into '{e.c_str}'."
+                return expla
+            if 'U:' in e.type:
+                expla = f"Please remove the unnecessary punctuation '{e.c_str}'."
+                return expla           
+    elif error == 'Subject Verb Agreement':
+        for e in edits:
+            if True:
+                expla = f"Please check the subject-verb agreement, choose the approate format for verb '{e.c_str}'."
+                return expla
+    elif error == 'Articles':
+        for e in edits:
+            if 'R:' in e.type:
+                expla = f"Consider article '{e.c_str}' in front of countable or singular nouns referring to people or things what have not already been mentioned."
+                return expla
+            elif 'M:' in e.type:
+                expla = f"Article '{e.c_str}' is required because of the countable or singular nouns referring to people or things what have not already been mentioned."
+                return expla
+            elif 'U:' in e.type:
+                return 'No article required'
+    elif error =='Preposition':
+        for e in edits:
+            if 'R:' in e.type:
+                expla = f"Consider '{e.c_str}' to be the proper preposition."
+                return expla
+            elif 'M:' in e.type:
+                expla = f"You need a preposition '{e.c_str}'before a noun or pronoun to show place, position, time or method."
+                return expla
+            elif 'U:' in e.type:
+                expla = f"You don't need preposition '{e.o_str}' here, consider to remove it."
+                return expla
+            else:
+                return 'Others'
 
 # 3. Import Data
 # The Data Imported here is the 
@@ -230,7 +261,12 @@ s6 = 'In comparison , the Esplanade spends four times more on arts programmes an
 get_explanation(s5,s6)
 
 # to test the explanation of subject-verb agreement
-s5 = 'An explanation of the statistics are required to make the data easy to understand.'
-s6 = 'An explanation of the statistics is required to make the data easy to understand.'
-get_explanation(s5,s6)
+s7 = 'An explanation of the statistics are required to make the data easy to understand.'
+s8 = 'An explanation of the statistics is required to make the data easy to understand.'
+get_explanation(s7,s8)
+
+# to test the explanation of preposition
+s9 = data['question'].iloc[8]
+s10 = data['solution'].iloc[8]
+get_explanation(s9,s10)
 
