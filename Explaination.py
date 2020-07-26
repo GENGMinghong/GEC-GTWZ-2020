@@ -183,21 +183,72 @@ def get_explanation(s1,s2):
     if get_category(s1,s2)=='Verb Form':
         for e in edits:
             if 'TENSE' in e.type:
-                return 'Verb Tense Error'
+                if 'R:' in e.type:
+                    return 'Verb tense error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Verb tense error, should insert '+e.c_str
+                else:
+                    return 'Verb tense error, should remove '+e.o_str
             elif 'FORM' in e.type:
-                return 'Verb Form error'
+                if 'R:' in e.type:
+                    return 'Verb form error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Verb form error, should insert '+e.c_str
+                else:
+                    return 'Verb form error, should remove '+e.o_str
+            elif set(ing).issubset(set(get_diff(e.o_str, e.c_str))):
+                if 'R:' in e.type:
+                    return 'Present continuous tense, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Present continuous tense, should insert '+e.c_str
+                else:
+                    return 'Present continuous tense, should remove '+e.o_str
             else:
-                return 'Other verb error'
+                if 'R:' in e.type:
+                    return 'Other verb error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Other verb error, should insert '+e.c_str
+                else:
+                    return 'Other verb error, should remove '+e.o_str
+
     elif get_category(s1,s2)=='Word Form':
         for e in edits:
             if 'NUM' in e.type:
-                return 'Noun Number error'
+                if 'R:' in e.type:
+                    return 'Noun Number error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Noun Number error, should insert '+e.c_str
+                else:
+                    return 'Noun Number error, should remove '+e.o_str
             elif 'ADJ' in e.type:
-                return 'Adjective error'
+                if 'R:' in e.type:
+                    return 'Adjective error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Adjective error, should insert '+e.c_str
+                else:
+                    return 'Adjective error, should remove '+e.o_str
             elif 'MORPH' in e.type:
-                return 'Morphology error'
+                if 'R:' in e.type:
+                    return 'Morphology error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Morphology error, should insert '+e.c_str
+                else:
+                    return 'Morphology error, should remove '+e.o_str
+            elif 'ORTH' in e.type:
+                if 'R:' in e.type:
+                    return 'Orthography error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Orthography error, should insert '+e.c_str
+                else:
+                    return 'Orthography error, should remove '+e.o_str
             else:
-                return 'Other word form error'
+                if 'R:' in e.type:
+                    return 'Other word form error, should replace '+e.o_str+' with '+e.c_str
+                elif 'M:' in e.type:
+                    return 'Other word form error, should insert '+e.c_str
+                else:
+                    return 'Other word form error, should remove '+e.o_str
+                
     elif get_category(s1, s2) == 'Punctuation':
         return 'Punctuation Error'
     elif get_category(s1, s2) == 'Subject Verb Agreement':
