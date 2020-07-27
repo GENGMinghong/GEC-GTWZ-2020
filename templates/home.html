@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Grammar Correction System</title>
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+    
+<style>
+h1 {text-align: center; color: white}
+p {text-align: center;font-size:14pt}
+div {text-align: center; display: inline-block;}
+body {
+background-image: url('https://i.ibb.co/vqb3zR9/Picture.png');
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+textarea{background:transparent;}
+
+.text_box
+    {
+     font-size:12pt;
+     height:200px;
+     width:500px;
+     text-align: left;
+     vertical-align: top;
+    }
+    
+</style>
+
+<body>
+
+<form action = "http://localhost:5000/result" method = "POST">
+    <h1>Grammar Correction System</h1>
+    <p> 
+        <br><br>Input Text<br>
+        <br><textarea type="text" id = "input_text" name="input_text" class="text_box"></textarea><br>
+        <br><button id="clicked" onclick="myFunction()">Submit</button><br>
+    </p>
+
+</form>
+    
+</body>
+</html>

@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 
-VOCAB_DIR = Path(__file__).resolve().parent.parent / "data"
+VOCAB_DIR = Path(__file__).resolve().parent.parent / "gector/data"
 PAD = "@@PADDING@@"
 UNK = "@@UNKNOWN@@"
 START_TOKEN = "$START"

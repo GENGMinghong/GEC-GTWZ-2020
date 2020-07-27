@@ -1,0 +1,260 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Grammar Correction System</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+<style>
+h1 {text-align: center;color: white;position: fixed; top: 0; left: 40%;}
+p {text-align: left;}
+div {text-align: center; display: inline-block;}
+body {
+background-image: url('https://i.ibb.co/vqb3zR9/Picture.png');
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+p.input_box_title{
+  position: fixed;
+      top: 100;
+      left: 31%;
+      font-size:14pt;
+}    
+
+p.output_box_title{
+  position: fixed;
+      top: 100;
+      right: 31%;
+      font-size:14pt;
+}
+
+p.action{
+  position: fixed;
+      top: 400;
+      left: 20%;
+      font-size:14pt;
+}
+
+p.category{
+  position: fixed;
+      top: 420;
+      left: 20%;
+      font-size:14pt;
+}
+
+p.explaination{
+  position: fixed;
+      top: 440;
+      left: 20%;
+      font-size:14pt;
+}
+
+
+div.input_box
+    {
+      position: fixed;
+      top: 160;
+      left: 20%;
+      height:20%;
+      width:26%;
+      border:1px solid #797D80;
+      overflow:auto;
+      font-size:12pt;
+      text-align: justify;
+      color: black;
+}
+
+div.output_box
+    {
+      position: fixed;
+      top: 160;
+      right: 20%;
+      height:20%;
+      width:26%;
+      border:1px solid #797D80;
+      overflow:auto;
+      font-size:12pt;
+      text-align: justify;
+      color: black;
+    }
+    
+</style>
+
+<body>
+ <h1>Grammar Correction Report</h1>
+
+<p class = "input_box_title">Input Text</p>
+<div class ="input_box" ></div>
+
+<p class = "output_box_title">Output Text</p>
+<div class ="output_box" ></div>
+
+<p class = "action"> </p>
+<p class = "category"> </p>
+<p class = "explaination"> </p>
+
+<form>
+ <input type="button" value="Go back!" onclick="history.back()" style = "position: fixed; top: 500; left: 20%;">
+</form>
+
+
+<script>
+  var input_text = '{{ result[0] }}';
+  var output_text = '{{ result[1] }}';
+  var action = '{{ result[2] }}';
+  var category = '{{ result[3] }}';
+  var explaination = '{{ result[4] }}';
+
+  $( ".input_box" ).html(input_text.replace(/####/,"<mark>").replace(/###/,"</mark>"));
+  $( ".output_box" ).html(output_text);
+  $(".action").html("<b>Action: </b>"+ action)
+  $(".category").html("<b>Category: </b>"+ category)
+  $(".explaination").html("<b>Explanation: </b>"+ explaination)
+
+</script>
+ 
+</body>
+</html>
+
+
+
+
+
+
+<!-- <!doctype html>
+<html>
+
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center; display: inline-block;}
+body {padding-top: 25px;  text-align: center;}
+
+    
+.text_box
+    {
+     font-size:12pt;
+     height:120px;
+     width:400px;
+     text-align: left;
+     vertical-align: top;
+     text-align: justify;
+    }
+.output_box
+    {
+    height:120px;
+    width:400px;
+    border:1px solid #797D80;
+    overflow:auto;
+    font-size:12pt;
+    text-align: justify;
+    }
+    
+</style>
+
+<script>
+
+$( ".show-data" ).html( "<mark>All new content. <em>You bet!</em></p></mark>" )
+
+// var html= "<br><br><p> Output Text <p>";
+// html +="<div class = 'output_box'>"+{{result}}.replace(/%/, "<mark>").replace(/%/, "</mark>")+"</div>";
+// $(".show-data").append(html)
+
+</script>
+
+   <body>
+   <h1>Grammar Correction Report</h1>
+   <script>
+    $( "div" ).html( "<p>Hello <b>Again</b></p>" );
+</script>
+
+   </body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grammar Correction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<script>
+function myFunction() {
+        $.ajax({
+                      url: "/join",
+                      type: "POST",
+                      data: {input_text:input_text}
+                  }).done(function(response) {
+                    var html= "<br><br><p> Output Text <p>";
+                    response =response.result;
+                         $.each(response,function(key,val){
+                         console.log(val);
+                            html +="<div class = 'output_box'>"+val.replace(/%/, "<mark>").replace(/%/, "</mark>")+"</div>"
+                        });
+    //                     html +="<br>";
+                        $(".show-data").append(html);
+    //                      e.preventDefault(); 
+                    });
+    };
+
+  // function myinputFunction() {
+  //       $.ajax({
+  //                     url: "/join",
+  //                     type: "POST",
+  //                     data: {input_text:input_text}
+  //                 }).done(function(response) {
+  //                   var html= "<br><br><p> Output Text <p>";
+  //                   response =response.result;
+  //                        $.each(response,function(key,val){
+  //                        console.log(val);
+  //                           html +="<div class = 'output_box'>"+val.replace(/%/, "<mark>").replace(/%/, "</mark>")+"</div>"
+  //                       });
+  //   //                     html +="<br>";
+  //                       $(".show-data").append(html);
+  //   //                      e.preventDefault(); 
+  //                   });
+  //   };
+    
+  </script>
+    
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center; display: inline-block;}
+body {padding-top: 25px;  text-align: center;}
+
+    
+.text_box
+    {
+     font-size:12pt;
+     height:120px;
+     width:400px;
+     text-align: left;
+     vertical-align: top;
+     text-align: justify;
+    }
+.output_box
+    {
+    height:120px;
+    width:400px;
+    border:1px solid #797D80;
+    overflow:auto;
+    font-size:12pt;
+    text-align: justify;
+    }
+    
+</style>
+    
+<body>
+    <h1>Grammar Correction System</h1>
+    <p> 
+        <br>Input Text<br>
+        <!-- <div class = 'text_box'>input_text</div> -->
+        <!-- <br><textarea type="text" id = "input_text" name="input_text" class="text_box"></textarea><br> -->
+        <!-- <br><button id="clicked" onclick="myFunction()">Submit</button><br> -->
+      <!--   </p>
+    <div class="show-data">
+    </div>
+</body>
+</html> -->
