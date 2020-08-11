@@ -18,13 +18,13 @@ Folder Structure:<br>
 +-- .gitignore<br>
 
 ### Background
-• The Use of English Quiz (UOEQ) is a test based on authentic & common errors committed by Singaporean students in their writing. However, manually generating UOEQ MCQ is very laborious. Building a system that automatically detect grammar errors for students becomes increasingly necessary.
-• Many grammatical checkers on the market are charged, and the free version of grammar checkers have many errors that cannot be found.
+- The Use of English Quiz (UOEQ) is a test based on authentic & common errors committed by Singaporean students in their writing. However, manually generating UOEQ MCQ is very laborious. Building a system that automatically detect grammar errors for students becomes increasingly necessary.
+- Many grammatical checkers on the market are charged, and the free version of grammar checkers have many errors that cannot be found.
 
-### Motivation:
+### Motivation
 SMU is looking for a tool which can:
-• Identify 6 categories of student errors in the essays (articles, subject-verb agreement, prepositions, word forms, verb forms, punctuation)
-• Highlight & explain these errors.
+- Identify 6 categories of student errors in the essays (articles, subject-verb agreement, prepositions, word forms, verb forms, punctuation)
+- Highlight & explain these errors.
 
 ### GEC Model
 We adopt the ensembled model which combines: BERT, RoBERTa and XLNet. 
