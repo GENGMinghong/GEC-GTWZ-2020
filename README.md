@@ -14,6 +14,7 @@ Folder Structure:<br>
 |   +-- home.html<br>
 |   +-- result.html<br>
 +-- notebooks<br>
+|   +-- get_started_with_the_functions<br>
 +-- app.py<br>
 +-- .gitignore<br>
 
@@ -40,6 +41,7 @@ Pre-trained Models and their performance
 
 ### Action, Error type and Explanation
 Errant: Automatically annotate parallel English sentences with error type information. Specifically, given an original and corrected sentence pair, ERRANT will extract the edits that transform the former to the latter and classify them according to a rule-based error type framework.
+Link: https://pypi.org/project/errant/
 
 Original Sentence: These devices generate huge amount of data that could be used by doctors to enhance patients'
 care (Burrus, 2015).
@@ -54,5 +56,4 @@ General Requirements: Python 3, TensorFlow, and Keras.
 
 ### To do
 - Add in punctuation handling function.
-- Update the test notebooks.
 
