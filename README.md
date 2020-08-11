@@ -51,9 +51,10 @@ care (Burrus, 2015).
 
 ### To Run the Codes
 - Download the codes.
-- Run one of the notebooks.
+- Run one of the notebooks. <br>
 General Requirements: Python 3, TensorFlow, and Keras.
 
 ### To do
 - Add in punctuation handling function.
+- Update the requirements.txt
 
