@@ -1,13 +1,12 @@
 # GEC-GTWZ-2020
 This is a project of Grammatical Error Correction system.<br>
 Author: Geng Minghong, Tao Xinru, Wei Yuqi, Zhou Yijun. <br>
-Last edit: 2020-08-11
+Last edit: 2020-08-12
 
 Folder Structure:<br>
 
 +-- gector<br>
-|   +-- <br>
-|   +-- <br>
+|   +-- grammar_check.ipynb <br>
 +-- post-processing<br>
 |   +-- function.py<br>
 +-- templates<br>
@@ -38,6 +37,7 @@ Pre-trained Models and their performance
 | XLNet | 0.35 | 0.66 | 65.3 | 72.4 | 
 | RoBERTa+XLNet | 0.24 | 0.45 | 66.0| 73.7 | 
 | BERT+RoBERTa+XLNet | 0.16 | 0.40 | 66.5 | 73.6 | 
+
 *More details can be found at https://github.com/grammarly/gector*
 
 ### Action, Error type and Explanation
@@ -52,10 +52,17 @@ care (Burrus, 2015).
 
 ### To Run the Codes
 - Download the codes.
+- Create Virtual Environment. (You may need this reference: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
+- install required packages: ```pip install -r requirements.txt``` 
+- Download 3 trained model weights from https://drive.google.com/drive/folders/1Ml5d14hFYbF8nOki9zoE-1gYSC-fzD8p?usp=sharing
+- Place the downloaded model weights in the folder gector/model_path. (You may need to create this folder manually)
 - Run one of the notebooks. <br>
-General Requirements: Python 3, TensorFlow, and Keras.
+- To test the GEC model: run ```grammar_check.ipynb```
+- To test the post processing functions: run ```Get_Started_with_the_functions.ipynb```
+- To try the Web UI: run ```python app.py```
 
 ### To do
-- Add in punctuation handling function.
-- Update the requirements.txt
-
+-	More grammatical error categories, such as adjective related errors, as well as a more detailed explanation for each kind of error type need to be involved, enhancing the interactivity of the system.
+-	Data that are closer to our business application scenarios should be involved, in order to fine-tune the current pre-trained model.
+-	Rule-based or other kinds of methods need to be involved to detect punctuation errors and the word form errors more accurately.
+-	In terms of accepted file type, more input formats including txt or word files need be allowed, increasing the practicality of the system.
