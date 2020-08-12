@@ -14,6 +14,8 @@ Folder Structure:<br>
 |   +-- result.html<br>
 +-- notebooks<br>
 |   +-- get_started_with_the_functions<br>
++-- requirements.txt<br>
++-- README.md<br>
 +-- app.py<br>
 +-- .gitignore<br>
 
