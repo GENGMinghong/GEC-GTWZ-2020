@@ -186,7 +186,7 @@ def get_highlighted_sentence(s1,s2):
             output.append(seqm.a[a0:a1].strip())
         elif opcode == 'insert':
             insert = seqm.b[b0:b1]
-            if seqm.b[b0-1] == " ":
+            if seqm.b[b0-1] == " " or seqm.b[b0] == " ":
                 output.append("<insert_word>")
             else:
                 v = a0
