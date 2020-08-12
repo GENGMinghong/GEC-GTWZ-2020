@@ -38,6 +38,7 @@ Pre-trained Models and their performance
 | XLNet | 0.35 | 0.66 | 65.3 | 72.4 | 
 | RoBERTa+XLNet | 0.24 | 0.45 | 66.0| 73.7 | 
 | BERT+RoBERTa+XLNet | 0.16 | 0.40 | 66.5 | 73.6 | 
+*More details can be found at https://github.com/grammarly/gector*
 
 ### Action, Error type and Explanation
 Errant: Automatically annotate parallel English sentences with error type information. Specifically, given an original and corrected sentence pair, ERRANT will extract the edits that transform the former to the latter and classify them according to a rule-based error type framework.
