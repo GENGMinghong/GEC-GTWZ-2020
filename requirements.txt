@@ -55,7 +55,7 @@ itsdangerous==1.1.0
 jedi @ file:///C:/ci/jedi_1592833832328/work
 Jinja2==2.11.2
 jmespath==0.10.0
-joblib==0.16.0
+joblib==1.2.0
 json5==0.9.5
 jsonpickle==1.4.1
 jsonschema==3.2.0
